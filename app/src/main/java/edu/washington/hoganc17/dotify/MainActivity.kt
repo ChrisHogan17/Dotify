@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         tvPlayCount.text = playsString
     }
 
+    fun changeUser(view: View) {
+        val tvUser = findViewById<TextView>(R.id.tvUser)
+
+    }
+
     fun playTrack(view: View) {
         playCount++
         val tvPlayCount = findViewById<TextView>(R.id.tvPlayCount)

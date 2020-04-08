@@ -94,11 +94,14 @@
         app:layout_constraintRight_toRightOf="parent"
         />
 
-    <ImageView
-        android:id="@+id/ivPlay"
+    <ImageButton
+        android:id="@+id/ibPlay"
         android:src="@drawable/play_circle"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:background="@android:color/transparent"
+        android:foreground="?selectableItemBackground"
+        android:scaleType="fitCenter"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginTop="32dp"
         android:text="Change User"
         app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
@@ -107,29 +110,35 @@
         android:onClick="playTrack"
         tools:ignore="HardcodedText" />
 
-    <ImageView
-        android:id="@+id/ivNext"
+    <ImageButton
+        android:id="@+id/ibNext"
         android:src="@drawable/skip_next"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:background="@android:color/transparent"
+        android:foreground="?selectableItemBackground"
+        android:scaleType="fitCenter"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginTop="32dp"
         android:text="Change User"
         app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
-        app:layout_constraintLeft_toRightOf="@id/ivPlay"
+        app:layout_constraintLeft_toRightOf="@id/ibPlay"
         app:layout_constraintRight_toRightOf="parent"
         android:onClick="skipNextTrack"
         tools:ignore="HardcodedText" />
 
-    <ImageView
-        android:id="@+id/ivPrev"
+    <ImageButton
+        android:id="@+id/ibPrev"
         android:src="@drawable/skip_prev"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:background="@android:color/transparent"
+        android:foreground="?selectableItemBackground"
+        android:scaleType="fitCenter"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginTop="32dp"
         android:text="Change User"
         app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/ivPlay"
+        app:layout_constraintRight_toLeftOf="@id/ibPlay"
         android:onClick="skipPrevTrack"
         tools:ignore="HardcodedText" />
 
