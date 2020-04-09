@@ -9,8 +9,9 @@
 
     <TextView
         android:id="@+id/tvUser"
-        android:textSize="16dp"
-        android:layout_width="0dp"
+        android:textSize="16sp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="hoganc17"
@@ -21,25 +22,41 @@
 
     <EditText
         android:id="@+id/etUser"
-        android:visibility="gone"
-        android:textSize="16dp"
-        android:layout_width="0dp"
+        android:inputType="text"
+        android:visibility="invisible"
+        android:textSize="16sp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        android:layout_width="112dp"
+        android:maxLines="1"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="hoganc17"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btnChangeUser"
+        app:layout_constraintRight_toLeftOf="@id/btnApply"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/btnChangeUser"
+        android:onClick="changeUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change User"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/tvUser"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/btnApply"
+        android:onClick="applyChanges"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/etUser"
         tools:ignore="HardcodedText" />
 
     <ImageView
