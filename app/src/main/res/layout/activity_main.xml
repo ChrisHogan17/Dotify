@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/tvUser"
-        android:textSize="16sp"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="hoganc17"
+        android:textSize="16sp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnChangeUser"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,15 +21,15 @@
 
     <EditText
         android:id="@+id/etUser"
-        android:inputType="text"
-        android:visibility="invisible"
-        android:textSize="16sp"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
         android:layout_width="112dp"
-        android:maxLines="1"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:inputType="text"
+        android:maxLines="1"
         android:text="hoganc17"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnApply"
         app:layout_constraintTop_toTopOf="parent"
@@ -38,127 +37,129 @@
 
     <Button
         android:id="@+id/btnChangeUser"
-        android:onClick="changeUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="changeUser"
         android:text="Change User"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/tvUser"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/btnApply"
-        android:onClick="applyChanges"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="applyChanges"
         android:text="Apply"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="invisible"
         app:layout_constraintLeft_toRightOf="@id/etUser"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/ivAlbum"
-        android:src="@drawable/daisuke"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
+        android:src="@drawable/daisuke"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnChangeUser"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/tvSongTitle"
-        android:text="Daisuke"
-        android:textSize="32sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ivAlbum"
+        android:text="Daisuke"
+        android:textSize="32sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/ivAlbum" />
 
     <TextView
         android:id="@+id/tvArtist"
-        android:text="El Huervo"
-        android:maxLines="1"
-        android:textSize="16sp"
-        android:ellipsize="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvSongTitle"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="El Huervo"
+        android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tvSongTitle" />
 
     <TextView
         android:id="@+id/tvPlayCount"
-        android:text="123456789 plays"
-        android:maxLines="1"
-        android:textSize="16sp"
-        android:ellipsize="end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/tvArtist"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="123456789 plays"
+        android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tvArtist" />
 
     <ImageButton
         android:id="@+id/ibPlay"
-        android:src="@drawable/play_circle"
-        android:background="@android:color/transparent"
-        android:foreground="?selectableItemBackground"
-        android:scaleType="fitCenter"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
-        android:text="Change User"
-        app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@android:color/transparent"
+        android:foreground="?selectableItemBackground"
         android:onClick="playTrack"
+        android:scaleType="fitCenter"
+        android:src="@drawable/play_circle"
+        android:text="Change User"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
         tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/ibNext"
-        android:src="@drawable/skip_next"
-        android:background="@android:color/transparent"
-        android:foreground="?selectableItemBackground"
-        android:scaleType="fitCenter"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:foreground="?selectableItemBackground"
+        android:onClick="skipNextTrack"
+        android:scaleType="fitCenter"
+        android:src="@drawable/skip_next"
         android:text="Change User"
-        app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
         app:layout_constraintLeft_toRightOf="@id/ibPlay"
         app:layout_constraintRight_toRightOf="parent"
-        android:onClick="skipNextTrack"
+        app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
         tools:ignore="HardcodedText" />
 
     <ImageButton
         android:id="@+id/ibPrev"
-        android:src="@drawable/skip_prev"
-        android:background="@android:color/transparent"
-        android:foreground="?selectableItemBackground"
-        android:scaleType="fitCenter"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:foreground="?selectableItemBackground"
+        android:onClick="skipPrevTrack"
+        android:scaleType="fitCenter"
+        android:src="@drawable/skip_prev"
         android:text="Change User"
-        app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/ibPlay"
-        android:onClick="skipPrevTrack"
+        app:layout_constraintTop_toBottomOf="@id/tvPlayCount"
         tools:ignore="HardcodedText" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

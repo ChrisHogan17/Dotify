@@ -43,11 +43,15 @@ class MainActivity : AppCompatActivity() {
 
     fun applyChanges(view: View) {
         val newName = etUser.text.toString()
-        tvUser.text = newName
-        tvUser.visibility = View.VISIBLE
-        btnChangeUser.visibility = View.VISIBLE
-        etUser.visibility = View.INVISIBLE
-        btnApply.visibility = View.INVISIBLE
+        if (newName != "") {
+            tvUser.text = newName
+            tvUser.visibility = View.VISIBLE
+            btnChangeUser.visibility = View.VISIBLE
+            etUser.visibility = View.INVISIBLE
+            btnApply.visibility = View.INVISIBLE
+        } else {
+            Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show()
+        }
     }
 
     fun playTrack(view: View) {
