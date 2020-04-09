@@ -5,4 +5,4 @@ Dotify is a prototype app that displays an album art, song title, and artist, as
 
 Attempted Extra Credit: 1, 3, 5
 
-![Dotify](DotifyScreen.jpg | width=100)
+![Dotify](DotifyScreen.jpg)
