@@ -17,7 +17,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnChangeUser"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        />
 
     <EditText
         android:id="@+id/etUser"
@@ -35,7 +35,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/btnApply"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        />
 
     <Button
         android:id="@+id/btnChangeUser"
@@ -46,7 +46,7 @@
         app:layout_constraintLeft_toRightOf="@id/tvUser"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        />
 
     <Button
         android:id="@+id/btnApply"
@@ -58,7 +58,7 @@
         app:layout_constraintLeft_toRightOf="@id/etUser"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        />
 
     <ImageView
         android:id="@+id/ivAlbum"
@@ -72,7 +72,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnChangeUser"
         app:layout_constraintBottom_toTopOf="@id/guideline"
-        tools:ignore="HardcodedText" />
+        />
 
     <TextView
         android:id="@+id/tvSongTitle"
