@@ -6,60 +6,6 @@
     android:layout_height="match_parent"
     android:padding="@dimen/marginMedium">
 
-    <TextView
-        android:id="@+id/tvUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginMedium"
-        android:text="hoganc17"
-        android:textSize="@dimen/textMedium"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btnChangeUser"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/etUser"
-        android:autofillHints="Username"
-        android:hint="Username"
-        android:layout_width="@dimen/editTextWidth"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginSmall"
-        android:inputType="text"
-        android:maxLines="1"
-        android:text="hoganc17"
-        android:textSize="@dimen/textMedium"
-        android:visibility="invisible"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btnApply"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <Button
-        android:id="@+id/btnChangeUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="changeUser"
-        android:text="Change User"
-        app:layout_constraintLeft_toRightOf="@id/tvUser"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <Button
-        android:id="@+id/btnApply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="applyChanges"
-        android:text="Apply"
-        android:visibility="invisible"
-        app:layout_constraintLeft_toRightOf="@id/etUser"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
     <ImageView
         android:id="@+id/ivAlbum"
         android:contentDescription="Album Art"
@@ -70,7 +16,7 @@
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnChangeUser"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/guideline"
         />
 

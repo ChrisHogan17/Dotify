@@ -25,13 +25,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tvUser = findViewById(R.id.tvUser)
         tvPlayCount = findViewById(R.id.tvPlayCount)
         tvSongTitle = findViewById(R.id.tvSongTitle)
         tvArtist = findViewById(R.id.tvArtist)
-        etUser = findViewById(R.id.etUser)
-        btnChangeUser = findViewById(R.id.btnChangeUser)
-        btnApply = findViewById(R.id.btnApply)
 
         tvPlayCount = findViewById<TextView>(R.id.tvPlayCount)
         val playsString = "$playCount plays"
@@ -41,26 +37,6 @@ class MainActivity : AppCompatActivity() {
         ivAlbum.setOnLongClickListener { ivAlbum: View ->
             changeColors()
             true
-        }
-    }
-
-    fun changeUser(view: View) {
-        tvUser.visibility = View.INVISIBLE
-        btnChangeUser.visibility = View.INVISIBLE
-        etUser.visibility = View.VISIBLE
-        btnApply.visibility = View.VISIBLE
-    }
-
-    fun applyChanges(view: View) {
-        val newName = etUser.text.toString()
-        if (newName != "") {
-            tvUser.text = newName
-            tvUser.visibility = View.VISIBLE
-            btnChangeUser.visibility = View.VISIBLE
-            etUser.visibility = View.INVISIBLE
-            btnApply.visibility = View.INVISIBLE
-        } else {
-            Toast.makeText(this, "Username cannot be empty", Toast.LENGTH_SHORT).show()
         }
     }
 
