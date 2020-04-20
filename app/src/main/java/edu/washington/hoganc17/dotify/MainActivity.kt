@@ -17,9 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvPlayCount: TextView
     private lateinit var tvSongTitle: TextView
     private lateinit var tvArtist: TextView
-    private lateinit var etUser: EditText
-    private lateinit var btnChangeUser: Button
-    private lateinit var btnApply: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
