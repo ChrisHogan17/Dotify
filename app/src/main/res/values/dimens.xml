@@ -5,7 +5,11 @@
     <dimen name="marginSmall">8dp</dimen>
 
     <dimen name="textLarge">32sp</dimen>
+    <dimen name="textMediumLarge">20sp</dimen>
     <dimen name="textMedium">16sp</dimen>
+    <dimen name="textMediumSmall">12sp</dimen>
+    <dimen name="textSmall">8sp</dimen>
+
 
     <dimen name="controlSize">64dp</dimen>
     <dimen name="editTextWidth">112dp</dimen>

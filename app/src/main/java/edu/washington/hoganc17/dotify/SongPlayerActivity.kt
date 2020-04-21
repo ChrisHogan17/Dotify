@@ -2,15 +2,13 @@ package edu.washington.hoganc17.dotify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
 
-class MainActivity : AppCompatActivity() {
+class SongPlayerActivity : AppCompatActivity() {
 
     private var playCount = Random.nextInt(10, 100000)
     private lateinit var tvUser: TextView
@@ -20,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_song_player)
 
         tvPlayCount = findViewById(R.id.tvPlayCount)
         tvSongTitle = findViewById(R.id.tvSongTitle)
