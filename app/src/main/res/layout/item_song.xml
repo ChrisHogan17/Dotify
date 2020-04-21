@@ -4,15 +4,17 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="@dimen/marginMedium">
+    android:padding="@dimen/marginMedium"
+    android:foreground="?selectableItemBackground">
 
     
     <ImageView
         android:id="@+id/ivListAlbumArt"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/songListAlbumSize"
+        android:layout_height="@dimen/songListAlbumSize"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        tools:src="@drawable/daisuke"
         />
 
     <TextView

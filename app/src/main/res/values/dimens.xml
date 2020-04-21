@@ -14,4 +14,7 @@
     <dimen name="controlSize">64dp</dimen>
     <dimen name="editTextWidth">112dp</dimen>
 
+    <dimen name="songListAlbumSize">64dp</dimen>
+    <dimen name="miniPlayerHeight">64dp</dimen>
+
 </resources>

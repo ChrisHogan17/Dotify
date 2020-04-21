@@ -2,6 +2,7 @@ package edu.washington.hoganc17.dotify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.ericchee.songdataprovider.SongDataProvider
 import kotlinx.android.synthetic.main.activity_song_list.*
 
@@ -15,6 +16,15 @@ class SongListActivity : AppCompatActivity() {
         val songList = SongDataProvider.getAllSongs()
 
         val songAdapter = SongAdapter(songList)
+        songAdapter.onSongClickListener = { songTitle ->
+            Toast.makeText(this, "Listening to $songTitle", Toast.LENGTH_SHORT).show()
+        }
+
+        btnShuffle.setOnClickListener {
+            val newSongList = songList.shuffled()
+            songAdapter.change(newSongList)
+        }
+
         rvSongs.adapter = songAdapter
 
     }
