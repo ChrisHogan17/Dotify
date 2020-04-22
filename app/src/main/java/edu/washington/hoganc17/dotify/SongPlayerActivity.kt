@@ -11,6 +11,12 @@ import kotlin.random.Random
 
 class SongPlayerActivity : AppCompatActivity() {
 
+    companion object {
+        const val TITLE_KEY = "TITLE_KEY"
+        const val ARTIST_KEY = "ARTIST_KEY"
+        const val ALBUM_KEY = "ALBUM_KEY"
+    }
+
     private var playCount = Random.nextInt(10, 100000)
 
 
@@ -22,10 +28,15 @@ class SongPlayerActivity : AppCompatActivity() {
         tvPlayCount.text = playsString
 
         val ivAlbum = findViewById<ImageView>(R.id.ivAlbum)
+
         ivAlbum.setOnLongClickListener { ivAlbum: View ->
             changeColors()
             true
         }
+
+        tvSongTitle.text = intent.getStringExtra(TITLE_KEY)
+        tvArtist.text = intent.getStringExtra(ARTIST_KEY)
+        ivAlbum.setImageResource(intent.getIntExtra(ALBUM_KEY, -1))
     }
 
     fun playTrack(view: View) {
@@ -43,7 +54,7 @@ class SongPlayerActivity : AppCompatActivity() {
         Toast.makeText(this, "Skipping to previous track", Toast.LENGTH_SHORT).show()
     }
 
-    fun changeColors() {
+    private fun changeColors() {
         tvSongTitle.setTextColor(ContextCompat.getColor(this, R.color.red))
         tvArtist.setTextColor(ContextCompat.getColor(this, R.color.red))
         tvPlayCount.setTextColor(ContextCompat.getColor(this, R.color.red))
