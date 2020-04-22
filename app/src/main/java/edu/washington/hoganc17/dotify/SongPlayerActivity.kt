@@ -5,26 +5,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
+import kotlinx.android.synthetic.main.activity_song_player.*
 import kotlin.random.Random
 
 
 class SongPlayerActivity : AppCompatActivity() {
 
     private var playCount = Random.nextInt(10, 100000)
-    private lateinit var tvUser: TextView
-    private lateinit var tvPlayCount: TextView
-    private lateinit var tvSongTitle: TextView
-    private lateinit var tvArtist: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_player)
 
-        tvPlayCount = findViewById(R.id.tvPlayCount)
-        tvSongTitle = findViewById(R.id.tvSongTitle)
-        tvArtist = findViewById(R.id.tvArtist)
-
-        tvPlayCount = findViewById<TextView>(R.id.tvPlayCount)
         val playsString = "$playCount plays"
         tvPlayCount.text = playsString
 
@@ -51,7 +44,6 @@ class SongPlayerActivity : AppCompatActivity() {
     }
 
     fun changeColors() {
-        tvUser.setTextColor(ContextCompat.getColor(this, R.color.red))
         tvSongTitle.setTextColor(ContextCompat.getColor(this, R.color.red))
         tvArtist.setTextColor(ContextCompat.getColor(this, R.color.red))
         tvPlayCount.setTextColor(ContextCompat.getColor(this, R.color.red))
