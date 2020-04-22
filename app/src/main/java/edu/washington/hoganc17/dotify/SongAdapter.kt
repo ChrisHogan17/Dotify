@@ -12,7 +12,7 @@ import com.ericchee.songdataprovider.Song
 class SongAdapter(songList: List<Song>) : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
 
     private var songList: List<Song> = songList.toList()
-    var onSongClickListener: ((title: String) -> Unit)? = null
+    var onSongClickListener: ((title: String, artist: String) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_song, parent, false)
@@ -46,7 +46,7 @@ class SongAdapter(songList: List<Song>) : RecyclerView.Adapter<SongAdapter.SongV
             ivListAlbumArt.setImageResource(song.smallImageID)
 
             itemView.setOnClickListener {
-                onSongClickListener?.invoke(song.title)
+                onSongClickListener?.invoke(song.title, song.artist)
             }
         }
     }

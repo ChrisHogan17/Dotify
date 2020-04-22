@@ -16,8 +16,8 @@ class SongListActivity : AppCompatActivity() {
         val songList = SongDataProvider.getAllSongs()
 
         val songAdapter = SongAdapter(songList)
-        songAdapter.onSongClickListener = { songTitle ->
-            Toast.makeText(this, "Listening to $songTitle", Toast.LENGTH_SHORT).show()
+        songAdapter.onSongClickListener = { songTitle, artist ->
+            tvMiniPlayer.text = getString(R.string.miniPlayerText).format(songTitle, artist)
         }
 
         btnShuffle.setOnClickListener {

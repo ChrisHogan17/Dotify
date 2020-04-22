@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Dotify</string>
     <string name="shuffleButtonText">Shuffle</string>
+    <string name="miniPlayerText">%s - %s</string>
 </resources>
