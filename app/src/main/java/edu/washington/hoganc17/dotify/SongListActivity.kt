@@ -25,11 +25,11 @@ class SongListActivity : AppCompatActivity() {
 
         val songAdapter = SongAdapter(songList)
 
-        songAdapter.onSongClickListener = { songTitle, artist, albumID ->
-            tvMiniPlayer.text = getString(R.string.miniPlayerText).format(songTitle, artist)
-            currSong = songTitle
-            currArtist = artist
-            currAlbum = albumID
+        songAdapter.onSongClickListener = { song ->
+            tvMiniPlayer.text = getString(R.string.miniPlayerText).format(song.title, song.artist)
+            currSong = song.title
+            currArtist = song.artist
+            currAlbum = song.largeImageID
             miniPlayerEmpty = false
         }
 
