@@ -31,6 +31,7 @@ class SongListActivity : AppCompatActivity() {
         btnShuffle.setOnClickListener {
             val newSongList = songList.shuffled()
             songAdapter.change(newSongList)
+            rvSongs.scrollToPosition(0)
         }
 
         miniPlayer.setOnClickListener {
