@@ -2,4 +2,8 @@
     <string name="app_name">Dotify</string>
     <string name="shuffleButtonText">Shuffle</string>
     <string name="miniPlayerText">%s - %s</string>
+    <string name="album_art_desc">Album Art</string>
+    <string name="default_song_title">Daisuke</string>
+    <string name="default_song_artist">El Huervo</string>
+    <string name="back_button_desc">Back button</string>
 </resources>

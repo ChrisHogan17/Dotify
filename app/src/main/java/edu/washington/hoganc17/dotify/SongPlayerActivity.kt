@@ -33,6 +33,10 @@ class SongPlayerActivity : AppCompatActivity() {
             true
         }
 
+        ibBack.setOnClickListener {
+            finish()
+        }
+
         val currSong: Song? = intent.getParcelableExtra(SONG_KEY)
         tvSongTitle.text = currSong?.title
         tvArtist.text = currSong?.artist
