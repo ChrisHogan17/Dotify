@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
+import com.ericchee.songdataprovider.Song
 import kotlinx.android.synthetic.main.activity_song_player.*
 import kotlin.random.Random
 
@@ -12,9 +13,7 @@ import kotlin.random.Random
 class SongPlayerActivity : AppCompatActivity() {
 
     companion object {
-        const val TITLE_KEY = "TITLE_KEY"
-        const val ARTIST_KEY = "ARTIST_KEY"
-        const val ALBUM_KEY = "ALBUM_KEY"
+        const val SONG_KEY = "SONG_KEY"
     }
 
     private var playCount = Random.nextInt(10, 100000)
@@ -34,9 +33,12 @@ class SongPlayerActivity : AppCompatActivity() {
             true
         }
 
-        tvSongTitle.text = intent.getStringExtra(TITLE_KEY)
-        tvArtist.text = intent.getStringExtra(ARTIST_KEY)
-        ivAlbum.setImageResource(intent.getIntExtra(ALBUM_KEY, -1))
+        val currSong: Song? = intent.getParcelableExtra(SONG_KEY)
+        tvSongTitle.text = currSong?.title
+        tvArtist.text = currSong?.artist
+        if (currSong != null) {
+            ivAlbum.setImageResource(currSong.largeImageID)
+        }
     }
 
     fun playTrack(view: View) {

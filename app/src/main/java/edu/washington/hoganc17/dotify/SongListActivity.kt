@@ -3,16 +3,14 @@ package edu.washington.hoganc17.dotify
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
-import edu.washington.hoganc17.dotify.SongPlayerActivity.Companion.ALBUM_KEY
-import edu.washington.hoganc17.dotify.SongPlayerActivity.Companion.ARTIST_KEY
-import edu.washington.hoganc17.dotify.SongPlayerActivity.Companion.TITLE_KEY
+import edu.washington.hoganc17.dotify.SongPlayerActivity.Companion.SONG_KEY
 import kotlinx.android.synthetic.main.activity_song_list.*
 
 class SongListActivity : AppCompatActivity() {
 
-    lateinit var currSong: String
-    lateinit var currArtist: String
+    lateinit var currSong: Song
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,15 +19,12 @@ class SongListActivity : AppCompatActivity() {
 
         val songList = SongDataProvider.getAllSongs()
         var miniPlayerEmpty = true
-        var currAlbum: Int? = null
 
         val songAdapter = SongAdapter(songList)
 
         songAdapter.onSongClickListener = { song ->
             tvMiniPlayer.text = getString(R.string.miniPlayerText).format(song.title, song.artist)
-            currSong = song.title
-            currArtist = song.artist
-            currAlbum = song.largeImageID
+            currSong = song
             miniPlayerEmpty = false
         }
 
@@ -41,10 +36,7 @@ class SongListActivity : AppCompatActivity() {
         miniPlayer.setOnClickListener {
             if(!miniPlayerEmpty) {
                 val intent = Intent(this, SongPlayerActivity::class.java)
-                intent.putExtra(TITLE_KEY, currSong)
-                intent.putExtra(ARTIST_KEY, currArtist)
-                intent.putExtra(ALBUM_KEY, currAlbum)
-
+                intent.putExtra(SONG_KEY, currSong)
                 startActivity(intent)
             }
         }
