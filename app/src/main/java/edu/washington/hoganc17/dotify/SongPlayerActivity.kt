@@ -2,7 +2,6 @@ package edu.washington.hoganc17.dotify
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
 import com.ericchee.songdataprovider.Song
@@ -26,15 +25,25 @@ class SongPlayerActivity : AppCompatActivity() {
         val playsString = "$playCount plays"
         tvPlayCount.text = playsString
 
-        val ivAlbum = findViewById<ImageView>(R.id.ivAlbum)
-
-        ivAlbum.setOnLongClickListener { ivAlbum: View ->
+        ivAlbum.setOnLongClickListener {
             changeColors()
             true
         }
 
         ibBack.setOnClickListener {
             finish()
+        }
+
+        ibPlay.setOnClickListener {
+            playTrack()
+        }
+
+        ibPrev.setOnClickListener {
+            skipTrack("previous")
+        }
+
+        ibNext.setOnClickListener {
+            skipTrack("next")
         }
 
         val currSong: Song? = intent.getParcelableExtra(SONG_KEY)
@@ -45,19 +54,15 @@ class SongPlayerActivity : AppCompatActivity() {
         }
     }
 
-    fun playTrack(view: View) {
+    private fun playTrack() {
         playCount++
         val tvPlayCount = findViewById<TextView>(R.id.tvPlayCount)
         val playsString = "$playCount plays"
         tvPlayCount.text = playsString
     }
 
-    fun skipNextTrack(view: View) {
-        Toast.makeText(this, "Skipping to next track", Toast.LENGTH_SHORT).show()
-    }
-
-    fun skipPrevTrack(view: View) {
-        Toast.makeText(this, "Skipping to previous track", Toast.LENGTH_SHORT).show()
+    private fun skipTrack(type: String) {
+        Toast.makeText(this, "Skipping to $type track", Toast.LENGTH_SHORT).show()
     }
 
     private fun changeColors() {
