@@ -43,4 +43,10 @@ class SongListFragment: Fragment() {
 
         rvSongs.adapter = songAdapter
     }
+
+    fun shuffleList() {
+        val newSongList = songList.shuffled()
+        songAdapter.change(newSongList)
+        rvSongs.scrollToPosition(0)
+    }
 }
