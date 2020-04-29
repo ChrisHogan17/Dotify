@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import edu.washington.hoganc17.dotify.SongPlayerActivity.Companion.SONG_KEY
+import edu.washington.hoganc17.dotify.model.SongAdapter
 import kotlinx.android.synthetic.main.activity_song_list.*
 
 class SongListActivity : AppCompatActivity() {
@@ -20,7 +21,8 @@ class SongListActivity : AppCompatActivity() {
         val songList = SongDataProvider.getAllSongs()
         var miniPlayerEmpty = true
 
-        val songAdapter = SongAdapter(songList)
+        val songAdapter =
+            SongAdapter(songList)
 
         songAdapter.onSongClickListener = { song ->
             tvMiniPlayer.text = getString(R.string.miniPlayerText).format(song.title, song.artist)

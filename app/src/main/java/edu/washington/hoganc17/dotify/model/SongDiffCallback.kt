@@ -1,4 +1,4 @@
-package edu.washington.hoganc17.dotify
+package edu.washington.hoganc17.dotify.model
 
 import androidx.recyclerview.widget.DiffUtil
 import com.ericchee.songdataprovider.Song

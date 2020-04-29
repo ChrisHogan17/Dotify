@@ -1,4 +1,4 @@
-package edu.washington.hoganc17.dotify
+package edu.washington.hoganc17.dotify.model
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ericchee.songdataprovider.Song
+import edu.washington.hoganc17.dotify.R
 
 class SongAdapter(songList: List<Song>) : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
 
@@ -27,7 +28,11 @@ class SongAdapter(songList: List<Song>) : RecyclerView.Adapter<SongAdapter.SongV
     }
 
     fun change(newSongs: List<Song>) {
-        val callback = SongDiffCallback(songList, newSongs)
+        val callback =
+            SongDiffCallback(
+                songList,
+                newSongs
+            )
         val diffResult = DiffUtil.calculateDiff(callback)
         diffResult.dispatchUpdatesTo(this)
 

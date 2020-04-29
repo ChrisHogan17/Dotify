@@ -7,8 +7,9 @@ import com.ericchee.songdataprovider.SongDataProvider
 import edu.washington.hoganc17.dotify.R
 import edu.washington.hoganc17.dotify.fragment.NowPlayingFragment
 import edu.washington.hoganc17.dotify.fragment.SongListFragment
+import edu.washington.hoganc17.dotify.model.OnSongClickListener
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnSongClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,18 +18,24 @@ class MainActivity : AppCompatActivity() {
         val masterSongList = SongDataProvider.getAllSongs() as ArrayList<Song>
 
         val songListFragment = SongListFragment()
-
         val argumentsBundle = Bundle().apply {
             putParcelableArrayList(SongListFragment.ARG_SONG_LIST, masterSongList)
         }
         songListFragment.arguments = argumentsBundle
 
-        val nowPlayingFragment = NowPlayingFragment()
 
-        val playingBundle = Bundle().apply {
-            putParcelable(NowPlayingFragment.SONG_KEY, masterSongList[0])
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragContainer, songListFragment)
+            .commit()
+    }
+
+    override fun onSongClicked(song: Song) {
+        val nowPlayingFragment = NowPlayingFragment()
+        val argumentsBundle = Bundle().apply {
+            putParcelable(NowPlayingFragment.SONG_KEY, song)
         }
-        nowPlayingFragment.arguments = playingBundle
+        nowPlayingFragment.arguments = argumentsBundle
 
         supportFragmentManager
             .beginTransaction()
