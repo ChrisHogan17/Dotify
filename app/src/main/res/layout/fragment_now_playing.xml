@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:padding="@dimen/marginMedium"
     android:background="@color/greyLight"
+    android:clickable="true"
+    android:focusable="true"
     >
 
     <ImageView

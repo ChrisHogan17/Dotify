@@ -19,6 +19,7 @@ class SongListFragment: Fragment() {
     private var onSongClickListener: OnSongClickListener? = null
 
     companion object {
+        val TAG: String = SongListFragment::class.java.simpleName
         const val ARG_SONG_LIST = "ARG_SONG_LIST"
     }
 
@@ -58,9 +59,11 @@ class SongListFragment: Fragment() {
         rvSongs.adapter = songAdapter
     }
 
-    fun shuffleList() {
+    fun shuffleList(): ArrayList<Song> {
         val newSongList = songList.shuffled()
         songAdapter.change(newSongList)
         rvSongs.scrollToPosition(0)
+        songList = newSongList as ArrayList<Song>
+        return songList
     }
 }

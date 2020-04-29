@@ -16,6 +16,7 @@ import kotlin.random.Random
 class NowPlayingFragment : Fragment() {
 
     companion object {
+        val TAG: String = NowPlayingFragment::class.java.simpleName
         const val SONG_KEY = "SONG_KEY"
     }
 
