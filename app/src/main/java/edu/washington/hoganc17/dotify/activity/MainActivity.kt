@@ -40,17 +40,30 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
             masterSongList = SongDataProvider.getAllSongs() as ArrayList<Song>
         }
 
-        val songListFragment = SongListFragment()
-        val argumentsBundle = Bundle().apply {
-            putParcelableArrayList(SongListFragment.ARG_SONG_LIST, masterSongList)
+        miniPlayer.visibility = View.GONE
+
+        lateinit var songListFragment: SongListFragment
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            songListFragment = SongListFragment()
+            val argumentsBundle = Bundle().apply {
+                putParcelableArrayList(SongListFragment.ARG_SONG_LIST, masterSongList)
+            }
+            songListFragment.arguments = argumentsBundle
+
+
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.fragContainer, songListFragment, SongListFragment.TAG)
+                .commit()
+
+            miniPlayer.visibility = View.VISIBLE
+        } else {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            val frag = supportFragmentManager.findFragmentByTag(SongListFragment.TAG) as? SongListFragment
+            frag?.let {
+                songListFragment = it
+            }
         }
-        songListFragment.arguments = argumentsBundle
-
-
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragContainer, songListFragment, SongListFragment.TAG)
-            .commit()
 
         supportFragmentManager.addOnBackStackChangedListener {
             if (supportFragmentManager.backStackEntryCount > 0) {
@@ -98,10 +111,7 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
     }
 
     private fun onMiniPlayerClicked(song: Song) {
-        var nowPlayingFragment = getNowPlayingFragment()
-
-        if (nowPlayingFragment == null) {
-            nowPlayingFragment = NowPlayingFragment()
+            val nowPlayingFragment = NowPlayingFragment()
             val argumentsBundle = Bundle().apply {
                 putParcelable(NowPlayingFragment.SONG_KEY, song)
             }
@@ -114,10 +124,5 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
                 .commit()
 
             miniPlayer.visibility = View.GONE
-        } else {
-            nowPlayingFragment.updateSong(song)
-        }
     }
-
-    private fun getNowPlayingFragment() = supportFragmentManager.findFragmentByTag(NowPlayingFragment.TAG) as? NowPlayingFragment
 }
