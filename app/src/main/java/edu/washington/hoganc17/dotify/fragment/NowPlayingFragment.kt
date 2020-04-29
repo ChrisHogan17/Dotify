@@ -30,7 +30,6 @@ class NowPlayingFragment : Fragment() {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,11 +56,15 @@ class NowPlayingFragment : Fragment() {
             skipTrack("Prev")
         }
 
-        tvSongTitle.text = currSong?.title
-        tvArtist.text = currSong?.artist
-        currSong?.let {
-            ivAlbum.setImageResource(it.largeImageID)
+        currSong?.let { song ->
+            updateSong(song)
         }
+    }
+
+    fun updateSong(song: Song) {
+        tvSongTitle.text = song.title
+        tvArtist.text = song.artist
+        ivAlbum.setImageResource(song.largeImageID)
     }
 
     private fun playTrack() {
