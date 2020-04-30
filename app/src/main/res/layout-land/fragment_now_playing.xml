@@ -32,6 +32,8 @@
         android:text="@string/default_song_title"
         android:textSize="@dimen/textLarge"
         android:gravity="center"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:layout_marginLeft="@dimen/marginLarge"
         android:layout_marginRight="@dimen/marginLarge"
         app:layout_constraintBottom_toBottomOf="parent"
