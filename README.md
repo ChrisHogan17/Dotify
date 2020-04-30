@@ -10,5 +10,5 @@ Behind the scenes, this version of Dotify uses fragments for the song list and s
 
 
 <img src="screenshots/DotifyListScreen.jpg" width="300">
-<img src="screenshots/DotifyPlayerScreen.jpg" width="300">
-<img src="screenshots/landscape.jpg" height="300">
+<img src="screenshots/DotifyPortrait.jpg" width="300">
+<img src="screenshots/DotifyLandscape.jpg" height="300">
