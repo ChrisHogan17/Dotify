@@ -9,6 +9,6 @@ The orientation of each screen can be changed to landscape, and details such as 
 Behind the scenes, this version of Dotify uses fragments for the song list and song player as opposed to full activities.
 
 
-<img src="Screenshots/DotifyListScreen.jpg" width="300">
-<img src="Screenshots/DotifyPlayerScreen.jpg" width="300">
-<img src="Screenshots/landscape.jpg" height="300">
+<img src="screenshots/DotifyListScreen.jpg" width="300">
+<img src="screenshots/DotifyPlayerScreen.jpg" width="300">
+<img src="screenshots/landscape.jpg" height="300">
