@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
         miniPlayer.visibility = View.GONE
 
         lateinit var songListFragment: SongListFragment
-        if (supportFragmentManager.backStackEntryCount == 0) {
+        if (supportFragmentManager.findFragmentByTag(NowPlayingFragment.TAG) == null) {
             songListFragment = SongListFragment()
             val argumentsBundle = Bundle().apply {
                 putParcelableArrayList(SongListFragment.ARG_SONG_LIST, masterSongList)
