@@ -80,7 +80,10 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
         }
 
         btnShuffle.setOnClickListener {
-            masterSongList = songListFragment.shuffleList()
+            val frag = supportFragmentManager.findFragmentByTag(SongListFragment.TAG) as? SongListFragment
+            frag?.let {
+                masterSongList = it.shuffleList()
+            }
         }
     }
 
