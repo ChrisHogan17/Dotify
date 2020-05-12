@@ -4,33 +4,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.ericchee.songdataprovider.Song
+import edu.washington.hoganc17.dotify.DotifyApp
 import edu.washington.hoganc17.dotify.R
 import edu.washington.hoganc17.dotify.fragment.NowPlayingFragment
 import edu.washington.hoganc17.dotify.fragment.SongListFragment
 import edu.washington.hoganc17.dotify.model.OnSongClickListener
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), OnSongClickListener {
-
-    private var currSong: Song? = null
-
-    companion object {
-        private const val OUT_CURR_SONG = "OUT_CURR_SONG"
-    }
+class MainActivity : AppCompatActivity(), OnSongClickListener, DotifyApp.SongPlayedListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState != null) {
-            with(savedInstanceState) {
-                val song = getParcelable<Song?>(OUT_CURR_SONG)
-                song?.let {
-                    updateSong(it)
-                }
-
-            }
-        }
+        val dotifyApp = application as DotifyApp
+        dotifyApp.songPlayedListener = this
 
         miniPlayer.visibility = View.GONE
 
@@ -61,6 +49,7 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
         }
 
         miniPlayer.setOnClickListener{
+            val currSong = dotifyApp.currSong
             currSong?.apply {
                 onMiniPlayerClicked(this)
             }
@@ -73,17 +62,12 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
     }
 
     override fun onSongClicked(song: Song) {
-        updateSong(song)
+        val dotifyApp = application as DotifyApp
+        dotifyApp.onSongPlayed(song)
     }
 
     private fun updateSong(song: Song) {
         tvMiniPlayer.text = getString(R.string.miniPlayerText).format(song.title, song.artist)
-        currSong = song
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putParcelable(OUT_CURR_SONG, currSong)
-        super.onSaveInstanceState(outState)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -111,5 +95,9 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
                 .commit()
 
             miniPlayer.visibility = View.GONE
+    }
+
+    override fun onSongPlayed(song: Song) {
+        updateSong(song)
     }
 }
