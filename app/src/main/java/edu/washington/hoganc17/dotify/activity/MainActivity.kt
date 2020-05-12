@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.ericchee.songdataprovider.Song
-import com.ericchee.songdataprovider.SongDataProvider
 import edu.washington.hoganc17.dotify.R
 import edu.washington.hoganc17.dotify.fragment.NowPlayingFragment
 import edu.washington.hoganc17.dotify.fragment.SongListFragment
@@ -14,11 +13,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), OnSongClickListener {
 
     private var currSong: Song? = null
-    private lateinit var masterSongList: ArrayList<Song>
 
     companion object {
         private const val OUT_CURR_SONG = "OUT_CURR_SONG"
-        private const val OUT_SONG_LIST = "OUT_SONG_LIST"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,13 +28,8 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
                 song?.let {
                     updateSong(it)
                 }
-                val songList = getParcelableArrayList<Song>(OUT_SONG_LIST)
-                songList?.let {
-                    masterSongList = it
-                }
+
             }
-        } else {
-            masterSongList = SongDataProvider.getAllSongs() as ArrayList<Song>
         }
 
         miniPlayer.visibility = View.GONE
@@ -45,11 +37,6 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
         lateinit var songListFragment: SongListFragment
         if (supportFragmentManager.findFragmentByTag(NowPlayingFragment.TAG) == null) {
             songListFragment = SongListFragment()
-            val argumentsBundle = Bundle().apply {
-                putParcelableArrayList(SongListFragment.ARG_SONG_LIST, masterSongList)
-            }
-            songListFragment.arguments = argumentsBundle
-
 
             supportFragmentManager
                 .beginTransaction()
@@ -81,9 +68,7 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
 
         btnShuffle.setOnClickListener {
             val frag = supportFragmentManager.findFragmentByTag(SongListFragment.TAG) as? SongListFragment
-            frag?.let {
-                masterSongList = it.shuffleList()
-            }
+            frag?.shuffleList()
         }
     }
 
@@ -98,7 +83,6 @@ class MainActivity : AppCompatActivity(), OnSongClickListener {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putParcelable(OUT_CURR_SONG, currSong)
-        outState.putParcelableArrayList(OUT_SONG_LIST, masterSongList)
         super.onSaveInstanceState(outState)
     }
 
