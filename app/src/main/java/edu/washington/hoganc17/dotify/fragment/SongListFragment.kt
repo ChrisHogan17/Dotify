@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.ericchee.songdataprovider.Song
 import edu.washington.hoganc17.dotify.DotifyApp
 import edu.washington.hoganc17.dotify.R
+import edu.washington.hoganc17.dotify.manager.MusicManager
 import edu.washington.hoganc17.dotify.model.OnSongClickListener
 import edu.washington.hoganc17.dotify.model.SongAdapter
 import kotlinx.android.synthetic.main.fragment_song_list.*
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_song_list.*
 class SongListFragment: Fragment() {
     private lateinit var songAdapter: SongAdapter
     private lateinit var songList: List<Song>
-    private lateinit var dotifyApp: DotifyApp
+    private lateinit var musicManager: MusicManager
 
     private var onSongClickListener: OnSongClickListener? = null
 
@@ -26,8 +27,8 @@ class SongListFragment: Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        dotifyApp = context.applicationContext as DotifyApp
-        songList = dotifyApp.listOfSongs
+        musicManager = (context.applicationContext as DotifyApp).musicManager
+        songList = musicManager.listOfSongs
 
 
         if (context is OnSongClickListener) {
@@ -59,6 +60,6 @@ class SongListFragment: Fragment() {
         songAdapter.change(newSongList)
         rvSongs.scrollToPosition(0)
         songList = newSongList
-        dotifyApp.updateList(newSongList)
+        musicManager.updateList(newSongList)
     }
 }

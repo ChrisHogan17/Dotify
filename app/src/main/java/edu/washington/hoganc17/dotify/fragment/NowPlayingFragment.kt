@@ -42,8 +42,8 @@ class NowPlayingFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val dotifyApp = context.applicationContext as DotifyApp
-        currSong = dotifyApp.currSong
+        val musicManager = (context.applicationContext as DotifyApp).musicManager
+        currSong = musicManager.currSong
     }
 
     override fun onCreateView(

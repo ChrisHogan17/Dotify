@@ -8,17 +8,24 @@ import edu.washington.hoganc17.dotify.DotifyApp
 import edu.washington.hoganc17.dotify.R
 import edu.washington.hoganc17.dotify.fragment.NowPlayingFragment
 import edu.washington.hoganc17.dotify.fragment.SongListFragment
+import edu.washington.hoganc17.dotify.manager.MusicManager
+import edu.washington.hoganc17.dotify.manager.SongPlayedListener
 import edu.washington.hoganc17.dotify.model.OnSongClickListener
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), OnSongClickListener, DotifyApp.SongPlayedListener{
+class MainActivity : AppCompatActivity(), OnSongClickListener, SongPlayedListener {
+
+    private lateinit var musicManager: MusicManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val dotifyApp = application as DotifyApp
-        dotifyApp.songPlayedListener = this
+        musicManager = (application as DotifyApp).musicManager
+        musicManager.songPlayedListener = this
+        musicManager.currSong?.let {
+            updateMiniPlayer(it)
+        }
 
         miniPlayer.visibility = View.GONE
 
@@ -49,8 +56,7 @@ class MainActivity : AppCompatActivity(), OnSongClickListener, DotifyApp.SongPla
         }
 
         miniPlayer.setOnClickListener{
-            val currSong = dotifyApp.currSong
-            currSong?.apply {
+            musicManager.currSong?.apply {
                 onMiniPlayerClicked(this)
             }
         }
@@ -62,11 +68,15 @@ class MainActivity : AppCompatActivity(), OnSongClickListener, DotifyApp.SongPla
     }
 
     override fun onSongClicked(song: Song) {
-        val dotifyApp = application as DotifyApp
-        dotifyApp.onSongPlayed(song)
+        musicManager.playSong(song)
     }
 
-    private fun updateSong(song: Song) {
+    override fun onSongPlayed(song: Song) {
+        updateMiniPlayer(song)
+    }
+
+
+    private fun updateMiniPlayer(song: Song) {
         tvMiniPlayer.text = getString(R.string.miniPlayerText).format(song.title, song.artist)
     }
 
@@ -95,9 +105,5 @@ class MainActivity : AppCompatActivity(), OnSongClickListener, DotifyApp.SongPla
                 .commit()
 
             miniPlayer.visibility = View.GONE
-    }
-
-    override fun onSongPlayed(song: Song) {
-        updateSong(song)
     }
 }
