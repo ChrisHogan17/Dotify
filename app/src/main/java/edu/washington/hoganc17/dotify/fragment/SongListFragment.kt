@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.ericchee.songdataprovider.Song
 import edu.washington.hoganc17.dotify.DotifyApp
 import edu.washington.hoganc17.dotify.R
 import edu.washington.hoganc17.dotify.manager.MusicManager
 import edu.washington.hoganc17.dotify.model.OnSongClickListener
+import edu.washington.hoganc17.dotify.model.Song
 import edu.washington.hoganc17.dotify.model.SongAdapter
 import kotlinx.android.synthetic.main.fragment_song_list.*
 

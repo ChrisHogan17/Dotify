@@ -1,7 +1,6 @@
 package edu.washington.hoganc17.dotify.model
 
 import androidx.recyclerview.widget.DiffUtil
-import com.ericchee.songdataprovider.Song
 
 class SongDiffCallback(
     private val oldSongs: List<Song>,
@@ -25,8 +24,8 @@ class SongDiffCallback(
 
         return (oldSong.title == newSong.title) &&
                 (oldSong.artist == newSong.artist) &&
-                (oldSong.largeImageID == newSong.largeImageID) &&
-                (oldSong.smallImageID == newSong.smallImageID)
+                (oldSong.smallImageURL == newSong.smallImageURL) &&
+                (oldSong.largeImageURL == newSong.largeImageURL)
 
     }
 

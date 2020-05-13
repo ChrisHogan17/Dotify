@@ -7,10 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.ericchee.songdataprovider.Song
+import com.squareup.picasso.Picasso
 import edu.washington.hoganc17.dotify.DotifyApp
 
 import edu.washington.hoganc17.dotify.R
+import edu.washington.hoganc17.dotify.model.Song
 import kotlinx.android.synthetic.main.fragment_now_playing.*
 import kotlin.random.Random
 
@@ -19,7 +20,6 @@ class NowPlayingFragment : Fragment() {
 
     companion object {
         val TAG: String = NowPlayingFragment::class.java.simpleName
-        const val SONG_KEY = "SONG_KEY"
         const val OUT_PLAY_COUNT = "OUT_PLAY_COUNT"
     }
 
@@ -33,10 +33,6 @@ class NowPlayingFragment : Fragment() {
                 val savedCount = getInt(OUT_PLAY_COUNT)
                 playCount = savedCount
             }
-        }
-
-        arguments?.let { args ->
-            currSong = args.getParcelable(SONG_KEY)
         }
     }
 
@@ -82,10 +78,10 @@ class NowPlayingFragment : Fragment() {
         super.onSaveInstanceState(outState)
     }
 
-    fun updateSong(song: Song) {
+    private fun updateSong(song: Song) {
         tvSongTitle.text = song.title
         tvArtist.text = song.artist
-        ivAlbum.setImageResource(song.largeImageID)
+        Picasso.get().load(song.largeImageURL).fit().noFade().into(ivAlbum)
     }
 
     private fun playTrack() {

@@ -3,7 +3,6 @@ package edu.washington.hoganc17.dotify.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.ericchee.songdataprovider.Song
 import edu.washington.hoganc17.dotify.DotifyApp
 import edu.washington.hoganc17.dotify.R
 import edu.washington.hoganc17.dotify.fragment.NowPlayingFragment
@@ -11,6 +10,7 @@ import edu.washington.hoganc17.dotify.fragment.SongListFragment
 import edu.washington.hoganc17.dotify.manager.MusicManager
 import edu.washington.hoganc17.dotify.manager.SongPlayedListener
 import edu.washington.hoganc17.dotify.model.OnSongClickListener
+import edu.washington.hoganc17.dotify.model.Song
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnSongClickListener, SongPlayedListener {
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity(), OnSongClickListener, SongPlayedListene
 
         miniPlayer.setOnClickListener{
             musicManager.currSong?.apply {
-                onMiniPlayerClicked(this)
+                onMiniPlayerClicked()
             }
         }
 
@@ -91,12 +91,8 @@ class MainActivity : AppCompatActivity(), OnSongClickListener, SongPlayedListene
         super.onBackPressed()
     }
 
-    private fun onMiniPlayerClicked(song: Song) {
+    private fun onMiniPlayerClicked() {
             val nowPlayingFragment = NowPlayingFragment()
-            val argumentsBundle = Bundle().apply {
-                putParcelable(NowPlayingFragment.SONG_KEY, song)
-            }
-            nowPlayingFragment.arguments = argumentsBundle
 
             supportFragmentManager
                 .beginTransaction()

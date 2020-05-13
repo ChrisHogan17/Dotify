@@ -1,17 +1,12 @@
 package edu.washington.hoganc17.dotify.manager
 
-import com.ericchee.songdataprovider.Song
-import com.ericchee.songdataprovider.SongDataProvider
+import edu.washington.hoganc17.dotify.model.Song
 
-class MusicManager {
+class MusicManager (songList: List<Song>) {
 
-    var listOfSongs: List<Song>
+    var listOfSongs: List<Song> = songList
     var currSong: Song? = null
     var songPlayedListener: SongPlayedListener? = null
-
-    init {
-        listOfSongs = SongDataProvider.getAllSongs()
-    }
 
     fun updateList(newList: List<Song>) {
         listOfSongs = newList

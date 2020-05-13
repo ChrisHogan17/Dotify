@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.ericchee.songdataprovider.Song
+import com.squareup.picasso.Picasso
 import edu.washington.hoganc17.dotify.R
 
 class SongAdapter(songList: List<Song>) : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
@@ -48,7 +48,7 @@ class SongAdapter(songList: List<Song>) : RecyclerView.Adapter<SongAdapter.SongV
         fun bind(song: Song) {
             tvListSongTitle.text = song.title
             tvListArtist.text = song.artist
-            ivListAlbumArt.setImageResource(song.smallImageID)
+            Picasso.get().load(song.smallImageURL).noFade().into(ivListAlbumArt)
 
             itemView.setOnClickListener {
                 onSongClickListener?.invoke(song)
