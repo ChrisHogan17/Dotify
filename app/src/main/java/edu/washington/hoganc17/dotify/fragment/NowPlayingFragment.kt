@@ -81,7 +81,7 @@ class NowPlayingFragment : Fragment() {
     private fun updateSong(song: Song) {
         tvSongTitle.text = song.title
         tvArtist.text = song.artist
-        Picasso.get().load(song.largeImageURL).fit().noFade().into(ivAlbum)
+        Picasso.get().load(song.largeImageURL).placeholder(R.drawable.album_placeholder).fit().noFade().into(ivAlbum)
     }
 
     private fun playTrack() {

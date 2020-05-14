@@ -48,7 +48,7 @@ class SongAdapter(songList: List<Song>) : RecyclerView.Adapter<SongAdapter.SongV
         fun bind(song: Song) {
             tvListSongTitle.text = song.title
             tvListArtist.text = song.artist
-            Picasso.get().load(song.smallImageURL).noFade().into(ivListAlbumArt)
+            Picasso.get().load(song.smallImageURL).placeholder(R.drawable.album_placeholder).noFade().into(ivListAlbumArt)
 
             itemView.setOnClickListener {
                 onSongClickListener?.invoke(song)
