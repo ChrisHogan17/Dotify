@@ -2,8 +2,17 @@ package edu.washington.hoganc17.dotify.manager
 
 import edu.washington.hoganc17.dotify.model.Song
 
-class MusicManager (apiManager: ApiManager) {
+class MusicManager (var apiManager: ApiManager) {
     init {
+        fetchSongs()
+    }
+
+    var listOfSongs: List<Song> = listOf()
+    var currSong: Song? = null
+    var songPlayedListener: SongPlayedListener? = null
+    var songsFetchListener: SongsFetchListener? = null
+
+    fun fetchSongs() {
         apiManager.fetchSongs(
             { retrievedSongs ->
                 listOfSongs = retrievedSongs
@@ -14,11 +23,6 @@ class MusicManager (apiManager: ApiManager) {
             }
         )
     }
-
-    var listOfSongs: List<Song> = listOf()
-    var currSong: Song? = null
-    var songPlayedListener: SongPlayedListener? = null
-    var songsFetchListener: SongsFetchListener? = null
 
     fun updateList(newList: List<Song>) {
         listOfSongs = newList

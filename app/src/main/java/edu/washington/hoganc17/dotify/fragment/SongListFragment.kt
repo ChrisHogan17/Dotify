@@ -33,7 +33,6 @@ class SongListFragment: Fragment(), SongsFetchListener {
         musicManager.songsFetchListener = this
         songList = musicManager.listOfSongs
 
-
         if (context is OnSongClickListener) {
             onSongClickListener = context
         }
@@ -56,6 +55,11 @@ class SongListFragment: Fragment(), SongsFetchListener {
         }
 
         rvSongs.adapter = songAdapter
+
+        swipeRefreshSong.setOnRefreshListener {
+            musicManager.fetchSongs()
+            swipeRefreshSong.isRefreshing = false
+        }
     }
 
     override fun onSongsFetched(fetchedSongList: List<Song>) {
