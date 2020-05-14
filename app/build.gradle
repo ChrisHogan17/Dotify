@@ -39,12 +39,12 @@ dependencies {
     // Recycler View
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
-    // Song Data Provider
-    implementation 'com.ericchee:songdataprovider:1.0.5'
-
     //GSON
     implementation 'com.google.code.gson:gson:2.8.6'
 
     //Picaso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Volley
+    implementation 'com.android.volley:volley:1.1.1'
 }

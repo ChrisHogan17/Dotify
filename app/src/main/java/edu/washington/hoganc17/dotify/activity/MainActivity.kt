@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity(), OnSongClickListener, SongPlayedListene
         updateMiniPlayer(song)
     }
 
-
     private fun updateMiniPlayer(song: Song) {
         tvMiniPlayer.text = getString(R.string.miniPlayerText).format(song.title, song.artist)
     }

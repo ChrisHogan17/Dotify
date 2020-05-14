@@ -11,8 +11,7 @@ class DotifyApp: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        apiManager = ApiManager()
-        val retrievedSongs = apiManager.fetchSongs()
-        musicManager = MusicManager(retrievedSongs)
+        apiManager = ApiManager(this)
+        musicManager = MusicManager(apiManager)
     }
 }
